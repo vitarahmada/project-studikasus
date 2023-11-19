@@ -13,14 +13,13 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
-    <title>Guarder</title>
+    <title>MyNovel</title>
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
     <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet" />
@@ -28,12 +27,18 @@
     <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
+<?php
+include "back-end/connection.php";
+
+$kategori1 = mysqli_query($connection, "SELECT * FROM kategori");
+?>
+
 <body class="sub_page">
     <div class="hero_area">
         <!-- header section strats -->
         <div class="hero_bg_box">
             <div class="img-box">
-                <img src="images/hero-bg.jpg" alt="">
+                <img src="images/about.jpg" alt="">
             </div>
         </div>
 
@@ -44,19 +49,19 @@
                         <a href="" class="contact_link1">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <span>
-                                Lorem ipsum dolor sit amet,
+                                Surabaya, Jawa Timur
                             </span>
                         </a>
                         <a href="" class="contact_link2">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
-                                Call : +01 1234567890
+                                Call : +62 85222333444
                             </span>
                         </a>
                         <a href="" class="contact_link3">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             <span>
-                                demo@gmail.com
+                                mynovel@gmail.com
                             </span>
                         </a>
                     </div>
@@ -70,39 +75,23 @@
                                 MyNovel
                             </span>
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class=""></span>
                         </button>
 
                         <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
                             <ul class="navbar-nav  ">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="index.html">Home <span
-                                            class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <div class="div dropdown show">
-                                        <a class="nav-link dropdown-toggle" href="kategori.html" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Kategori
-                                        </a>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="romance.html">Romance</a>
-                                            <a class="dropdown-item" href="#">Fantasy</a>
-                                            <a class="dropdown-item" href="#">History</a>
-                                        </div>
-                                    </div>
+                                    <a class="nav-link" href="novel.php"> NOVEL</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html"> About</a>
+                                    <a class="nav-link" href="penulis.php"> AUTHOR</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="guard.html"> Guards </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact us</a>
+                                    <a class="nav-link" href="about.html"> ABOUT</a>
                                 </li>
                             </ul>
                         </div>
@@ -119,31 +108,15 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Add Data Buku
+                    Add Category
                 </h2>
             </div>
-            <form class="text-light">
+            <form class="text-light" action="back-end/proses_add_kategori.php" method="post">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">ID Kategori</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <label for="exampleFormControlInput1">Nama Kategori</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_kategori">
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Judul</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput2">Harga</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput2">
-                </div>
-                <input type="submit" name="Submit" value="submit" class="btn btn-secondary">
+                <input type="submit" name="Submit" value="Submit" class="btn btn-secondary">
             </form>
         </div>
     </section>
@@ -155,8 +128,7 @@
     <!-- footer section -->
     <footer class="container-fluid footer_section">
         <p>
-            &copy; <span id="currentYear"></span> All Rights Reserved. Design by
-            <a href="https://html.design/">Free Html Templates</a>
+            &copy; <span id="currentYear"></span> vitarahmada
         </p>
     </footer>
     <!-- footer section -->

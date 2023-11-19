@@ -27,12 +27,18 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
+<?php
+include "back-end/connection.php";
+
+$novel1 = mysqli_query($connection, "SELECT * FROM novel");
+?>
+
 <body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
     <div class="hero_bg_box">
       <div class="img-box">
-        <img src="images/hero-bg.jpg" alt="">
+        <img src="images/main.jpg" alt="">
       </div>
     </div>
 
@@ -43,19 +49,19 @@
             <a href="" class="contact_link1">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
-                Lorem ipsum dolor sit amet,
+                Surabaya, Jawa Timur
               </span>
             </a>
             <a href="" class="contact_link2">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <span>
-                Call : +01 1234567890
+                Call : +62 85222333444
               </span>
             </a>
             <a href="" class="contact_link3">
               <i class="fa fa-envelope" aria-hidden="true"></i>
               <span>
-                demo@gmail.com
+                mynovel@gmail.com
               </span>
             </a>
           </div>
@@ -66,7 +72,7 @@
           <nav class="navbar navbar-expand-lg custom_nav-container">
             <a class="navbar-brand" href="index.html">
               <span>
-                Guarder
+                MyNovel
               </span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,16 +85,22 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                  <div class="div dropdown show">
+                    <a class="nav-link dropdown-toggle" href="kategori.html" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Kategori
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="romance.php">Romance</a>
+                      <a class="dropdown-item" href="fantasy.php">Fantasy</a>
+                      <a class="dropdown-item" href="history.php">History</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="about.html"> About</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="service.html"> Services </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="guard.html"> Guards </a>
-                </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="contact.html">Contact us</a>
+                  <a class="nav-link" href="contact.php">Contact us</a>
                 </li>
               </ul>
             </div>
@@ -104,7 +116,7 @@
   <section class="contact_section layout_padding">
     <div class="contact_bg_box">
       <div class="img-box">
-        <img src="images/contact-bg.jpg" alt="">
+        <img src="images/contact.jpg" alt="">
       </div>
     </div>
     <div class="container">
@@ -127,6 +139,14 @@
                   </div>
                   <div>
                     <input type="text" placeholder="Phone Number" />
+                  </div>
+                  <div>
+                    <!-- <label>ID Kategori</label> -->
+                    <select>
+                      <?php foreach ($novel1 as $novel) { ?>
+                        <option><?php echo $novel['id_novel'] . " - " . $novel['judul'] ?></option>
+                      <?php } ?>
+                    </select>
                   </div>
                   <div class="">
                     <input type="text" placeholder="Message" class="message_input" />
